@@ -9,4 +9,20 @@ router.get("/", (req, res) => {
   });
 });
 
+//GET Show single article
+router.get("/show/:id", (req, res) => {
+  res.render("article", {
+    title: "Article",
+    flash: { success: req.flash("success") }
+  });
+});
+
+//GET category articles
+router.get("/category/:category_id", (req, res) => {
+  res.render("articles", {
+    title: "Category Articles",
+    flash: { success: req.flash("success") }
+  });
+});
+
 module.exports = router;
