@@ -5,6 +5,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   // req.flash('success', 'Flash Message Text!');
   res.render("index", {
+    title: "Index",
     flash: { success: req.flash("success") }
   });
 });
