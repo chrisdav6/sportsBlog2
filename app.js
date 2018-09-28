@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || '3000';
 
+const index = require("./routes/index");
+const articles = require("./routes/articles");
+const categories = require("./routes/categories");
+
 //Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -17,9 +21,9 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 app.set("view engine", "ejs");
 
 //Routes
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.use("/", index);
+app.use("/articles", articles);
+app.use("/categories", categories);
 
 //Start Server
 app.listen(port, () => {
