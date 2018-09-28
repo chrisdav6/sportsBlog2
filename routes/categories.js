@@ -21,8 +21,8 @@ router.get("/", (req, res) => {
 //POST Add Category
 router.post("/add", (req, res) => {
   let category = new Category();
-  category.title = req.body.categoryName;
-  category.description = req.body.categoryDescription;
+  category.title = req.body.title;
+  category.description = req.body.description;
 
   Category.addCategory(category, (err, category) => {
     if(err) {
