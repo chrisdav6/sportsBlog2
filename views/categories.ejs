@@ -14,7 +14,7 @@
 <div class="container">
   <p><%= title %></p>
   <% categories.forEach((category) => { %>
-    <p><a href="#"><%= category.title %></a></p>
+    <p><a href="/articles/category/<%= category._id %>"><%= category.title %></a></p>
   <% }); %>
 </div>
 
