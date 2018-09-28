@@ -3,7 +3,10 @@ const router = express.Router();
 
 //GET HomePage
 router.get("/", (req, res) => {
-  res.render("index");
+  // req.flash('success', 'Flash Message Text!');
+  res.render("index", {
+    flash: { success: req.flash("success") }
+  });
 });
 
 module.exports = router;

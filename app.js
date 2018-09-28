@@ -1,5 +1,9 @@
 const express = require("express");
 const path = require("path");
+const expressValidatior = require("express-validator");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
 const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || '3000';
@@ -19,6 +23,15 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 
 //Use EJS Template Engine
 app.set("view engine", "ejs");
+
+//Use connect-flash
+app.use(cookieParser());
+app.use(session({
+  secret: 'secret123',
+  saveUninitialized: true,
+  resave: true
+}));
+app.use(flash());
 
 //Routes
 app.use("/", index);
