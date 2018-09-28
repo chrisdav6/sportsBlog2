@@ -13,6 +13,9 @@
 
 <div class="container">
   <p><%= title %></p>
+  <% categories.forEach((category) => { %>
+    <p><a href="#"><%= category.title %></a></p>
+  <% }); %>
 </div>
 
 <%- include partials/footer.ejs %>

@@ -13,6 +13,12 @@ const articles = require("./routes/articles");
 const categories = require("./routes/categories");
 const manage = require("./routes/manage");
 
+//Connect to DB
+const db = "mongodb://chris:chris6@ds117773.mlab.com:17773/sportsblog";
+mongoose.connect(db, () => {
+  console.log("Connected to DB");
+});
+
 //Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
