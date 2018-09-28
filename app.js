@@ -11,6 +11,7 @@ const port = process.env.PORT || '3000';
 const index = require("./routes/index");
 const articles = require("./routes/articles");
 const categories = require("./routes/categories");
+const manage = require("./routes/manage");
 
 //Body Parser
 app.use(express.json());
@@ -37,6 +38,7 @@ app.use(flash());
 app.use("/", index);
 app.use("/articles", articles);
 app.use("/categories", categories);
+app.use("/manage", manage);
 
 //Start Server
 app.listen(port, () => {
