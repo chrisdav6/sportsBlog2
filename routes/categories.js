@@ -15,7 +15,6 @@ router.get("/", (req, res) => {
       flash: { success: req.flash("success") }
     });
   });
-  
 });
 
 //POST Add Category
