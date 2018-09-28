@@ -10,10 +10,18 @@ router.get("/", (req, res) => {
   });
 });
 
-//GET Manage Form
+//GET Add Articles Form
 router.get("/articles/add", (req, res) => {
   res.render("add_article", {
     title: "Create Article",
+    flash: { success: req.flash("success") }
+  });
+});
+
+//GET Add Categories Form
+router.get("/categories/add", (req, res) => {
+  res.render("add_category", {
+    title: "Create Category",
     flash: { success: req.flash("success") }
   });
 });
