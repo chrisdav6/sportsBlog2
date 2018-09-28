@@ -4,7 +4,7 @@
   "description": "Sports Blog using Node, Express and Mongoose",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "gulp | node app.js"
   },
   "author": "Chris Davis",
   "license": "ISC",
@@ -14,5 +14,10 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "mongoose": "^5.2.17"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
   }
 }
