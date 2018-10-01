@@ -1,12 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const Category = require("../models/category");
+const Article = require("../models/article");
 
 //GET View Articles to Manage
 router.get("/articles", (req, res) => {
-  res.render("manage_articles", {
-    title: "Manage Articles",
-    flash: { success: req.flash("success") }
+  Article.getArticles((err, articles) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.render("manage_articles", {
+      title: "Articles",
+      articles: articles,
+      flash: { success: req.flash("success") }
+    });
   });
 });
 
@@ -27,9 +35,23 @@ router.get("/articles/add", (req, res) => {
 
 //GET Show Edit Articles Form
 router.get("/articles/edit/:id", (req, res) => {
-  res.render("edit_article", {
-    title: "Edit Article",
-    flash: { success: req.flash("success") }
+  Category.getCategories((err, categories) => {
+    if (err) {
+      res.send(err);
+    }
+
+    Article.getArticleById(req.params.id, (err, article) => {
+      if (err) {
+        res.send(err);
+      }
+
+      res.render("edit_article", {
+        title: "Edit Article",
+        article: article,
+        categories: categories,
+        flash: { success: req.flash("success") }
+      });
+    });
   });
 });
 

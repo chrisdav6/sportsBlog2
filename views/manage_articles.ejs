@@ -2,14 +2,31 @@
 
 <section id="manageArticles" class="py-5">
   <div class="container">
-    <h1>
-      <%= title %>
-    </h1>
-    <hr class="mb-5">
+    <div class="row d-flex align-items-center">
+      <div class="col-md-9 text-center text-md-left">
+        <h1 class="mb-0">
+          <%= title %>
+        </h1>
+      </div>
+      <div class="col-md-3 text-center text-md-right mt-3 mt-md-0">
+        <a href="/manage/articles/add" class="btn btn-success">Add Article</a>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col">
-        
+        <hr class="mb-5">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <ul class="list-group">
+          <% articles.forEach((article) => { %>
+          <li class="list-group-item d-flex align-items-center">
+            <%= article.title %> <a href="/manage/articles/edit/<%= article._id %>" class="btn btn-warning btn-sm ml-auto">Edit</a></li>
+          <% }); %>
+        </ul>
       </div>
     </div>
   </div>

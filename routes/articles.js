@@ -4,16 +4,9 @@ const Article = require("../models/article");
 
 //GET Articles
 router.get("/", (req, res) => {
-  Article.getArticles((err, articles) => {
-    if(err) {
-      res.send(err);
-    }
-
-    res.render("articles", {
-      title: "Articles",
-      articles: articles,
-      flash: { success: req.flash("success") }
-    });
+  res.render("articles", {
+    title: "Articles",
+    flash: { success: req.flash("success") }
   });
 });
 

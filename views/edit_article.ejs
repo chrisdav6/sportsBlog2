@@ -1,20 +1,49 @@
 <%- include partials/header.ejs %>
 
-<section id="feature" class="text-light d-flex align-items-center">
+<section id="editArticle" class="py-5">
   <div class="container">
+    <h1>
+      <%= title %>
+    </h1>
+    <hr class="mb-5">
+
     <div class="row">
       <div class="col">
-        <h1 class="display-2 mt-5">SportsBlog</h1>
-        <p class="lead">Get your sports fix today!</p>
+        <form action="/articles/add" method="post">
+          <div class="form-group">
+            <label for="title">Article Title</label>
+            <input type="text" class="form-control form-control-lg" name="title" id="title" value="<%= article.title %>">
+          </div>
+          <div class="form-group">
+            <label for="subtitle">Article Subtitle</label>
+            <input type="text" class="form-control form-control-lg" name="subtitle" id="subtitle" value="<%= article.subtitle %>">
+          </div>
+          <div class="form-group">
+            <label for="category">Article Category</label>
+            <select class="form-control form-control-lg" name="category" id="category">
+              <% categories.forEach((category) => { %>
+              <option value="<%= category._id %>">
+                <%= category.title %>
+              </option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="author">Article Author</label>
+            <input type="text" class="form-control form-control-lg" name="author" id="author" value="<%= article.author %>">
+          </div>
+          <div class="form-group">
+            <label for="body">Article Body</label>
+            <textarea class="form-control form-control-lg" name="body" id="body" rows="5"><%= article.body %></textarea>
+          </div>
+          <div class="d-flex align-items-center mt-5">
+            <a href="/manage/articles" class="text-dark mb-0"><i class="fas fa-angle-left"></i> Back</a>
+            <button class="btn btn-success btn-lg ml-auto">Edit Article</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </section>
-
-<div class="container">
-  <p>
-    <%= title %>
-  </p>
-</div>
 
 <%- include partials/footer.ejs %>

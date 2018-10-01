@@ -1,24 +1,18 @@
 <%- include partials/header.ejs %>
 
-<section id="articles" class="py-5">
+<section id="feature" class="text-light d-flex align-items-center">
   <div class="container">
-    <h1>
-      <%= title %>
-    </h1>
-    <hr class="mb-5">
-
     <div class="row">
       <div class="col">
-        <ul class="list-group">
-          <% articles.forEach((article) => { %>
-          <li class="list-group-item">
-            <a href="/articles/category/<%= article._id %>" class="text-dark">
-              <%= article.title %></a></li>
-          <% }); %>
-        </ul>
+        <h1 class="display-2 mt-5">SportsBlog</h1>
+        <p class="lead">Get your sports fix today!</p>
       </div>
     </div>
   </div>
 </section>
+
+<div class="container">
+  <p><%= title %></p>
+</div>
 
 <%- include partials/footer.ejs %>
