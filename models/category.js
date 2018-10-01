@@ -31,3 +31,8 @@ module.exports.getCategoryById = (id, callback) => {
 module.exports.updateCategory = (query, update, options, callback) => {
   Category.findOneAndUpdate(query, update, options, callback);
 };
+
+//Remove Category
+module.exports.removeCategory = (query, callback) => {
+  Category.deleteOne(query, callback);
+};
