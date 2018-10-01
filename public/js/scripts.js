@@ -6,7 +6,6 @@ $(() => {
       type: "DELETE",
       url: "/categories/delete/" + $target.attr("data-cat-id"),
       success: (response) => {
-        alert("Category Removed");
         window.location.href = "/manage/categories";
       },
       error: (error) => {
