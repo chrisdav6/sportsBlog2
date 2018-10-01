@@ -9,7 +9,7 @@
 
     <div class="row">
       <div class="col">
-        <form action="/articles/add" method="post">
+        <form action="/articles/edit/<%= article._id %>" method="post">
           <div class="form-group">
             <label for="title">Article Title</label>
             <input type="text" class="form-control form-control-lg" name="title" id="title" value="<%= article.title %>">
