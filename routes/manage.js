@@ -12,9 +12,16 @@ router.get("/articles", (req, res) => {
 
 //GET Show Add Articles Form
 router.get("/articles/add", (req, res) => {
-  res.render("add_article", {
-    title: "Create Article",
-    flash: { success: req.flash("success") }
+  Category.getCategories((err, categories) => {
+    if(err) {
+      res.send(err);
+    }
+
+    res.render("add_article", {
+      title: "Create Article",
+      categories: categories,
+      flash: { success: req.flash("success") }
+    });
   });
 });
 
