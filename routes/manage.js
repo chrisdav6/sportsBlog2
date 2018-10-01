@@ -51,9 +51,16 @@ router.get("/categories/add", (req, res) => {
 
 //GET Show Edit Categories Form
 router.get("/categories/edit/:id", (req, res) => {
-  res.render("edit_category", {
-    title: "Edit Category",
-    flash: { success: req.flash("success") }
+  Category.getCategoryById(req.params.id, (err, category) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.render("edit_category", {
+      title: "Edit Category",
+      category: category,
+      flash: { success: req.flash("success") }
+    });
   });
 });
 

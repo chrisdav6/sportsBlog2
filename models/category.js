@@ -21,3 +21,13 @@ module.exports.getCategories = (callback, limit) => {
 module.exports.addCategory = (category, callback) => {
   Category.create(category, callback);
 };
+
+//Get Single Category by Id
+module.exports.getCategoryById = (id, callback) => {
+  Category.findById(id, callback);
+};
+
+//Update Single Category
+module.exports.updateCategory = (query, update, options, callback) => {
+  Category.findOneAndUpdate(query, update, options, callback);
+};

@@ -32,4 +32,19 @@ router.post("/add", (req, res) => {
   });
 });
 
+//POST Edit Category
+router.post("/edit/:id", (req, res) => {
+  let category = new Category();
+  const query = { _id: req.params.id };
+  const update = { title: req.body.title, description: req.body.description };
+
+  Category.updateCategory(query, update, {}, (err, category) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.redirect("/manage/categories");
+  });
+});
+
 module.exports = router;
