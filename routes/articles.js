@@ -65,4 +65,17 @@ router.post("/edit/:id", (req, res) => {
   });
 });
 
+//DELETE Delete Article
+router.delete("/delete/:id", (req, res) => {
+  const query = { _id: req.params.id };
+
+  Article.removeArticle(query, (err, article) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.sendStatus(200);
+  });
+});
+
 module.exports = router;
