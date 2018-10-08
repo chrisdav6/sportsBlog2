@@ -23,8 +23,15 @@
       <div class="col">
         <ul class="list-group">
           <% articles.forEach((article) => { %>
-          <li class="list-group-item d-flex align-items-center">
-            <%= article.title %> <a href="/manage/articles/edit/<%= article._id %>" class="btn btn-warning btn-sm ml-auto">Edit</a></li>
+          <li class="list-group-item">
+            <div class="d-flex align-items-center">
+              <h3><%= article.title %></h3> <a href="/manage/articles/edit/<%= article._id %>" class="btn btn-warning btn-sm ml-auto">Edit</a>
+            </div>
+            <div>
+              <p class="mb-0">Created: <%= article.created_at %></p>
+              <p class="mb-0">Author: <%= article.author %></p>
+            </div>
+            </li>
           <% }); %>
         </ul>
       </div>
