@@ -12,11 +12,11 @@
         <form action="/articles/add" method="post">
           <div class="form-group">
             <label for="title">Article Title</label>
-            <input type="text" class="form-control form-control-lg" name="title" id="title">
+            <input type="text" class="form-control form-control-lg" name="title" id="title" required>
           </div>
           <div class="form-group">
             <label for="subtitle">Article Subtitle</label>
-            <input type="text" class="form-control form-control-lg" name="subtitle" id="subtitle">
+            <input type="text" class="form-control form-control-lg" name="subtitle" id="subtitle" required>
           </div>
           <div class="form-group">
             <label for="category">Article Category</label>
@@ -28,11 +28,11 @@
           </div>
           <div class="form-group">
             <label for="author">Article Author</label>
-            <input type="text" class="form-control form-control-lg" name="author" id="author">
+            <input type="text" class="form-control form-control-lg" name="author" id="author" required>
           </div>
           <div class="form-group">
             <label for="body">Article Body</label>
-            <textarea class="form-control form-control-lg" name="body" id="body" rows="5"></textarea>
+            <textarea class="form-control form-control-lg" name="body" id="body" rows="5" required></textarea>
           </div>
           <div class="d-flex align-items-center mt-5">
             <a href="/manage/articles" class="text-dark mb-0"><i class="fas fa-angle-left"></i> Back</a>
