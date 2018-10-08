@@ -22,9 +22,11 @@
             <label for="category">Article Category</label>
             <select class="form-control form-control-lg" name="category" id="category">
               <% categories.forEach((category) => { %>
-              <option value="<%= category._id %>">
-                <%= category.title %>
-              </option>
+                <% if(category._id == article.category) { %>
+                  <option value="<%= category._id %>" selected><%= category.title %></option>
+                <% } else { %>
+                  <option value="<%= category._id %>"><%= category.title %></option>
+                <% } %>
               <% }); %>
             </select>
           </div>

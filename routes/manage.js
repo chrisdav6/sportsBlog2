@@ -35,12 +35,12 @@ router.get("/articles/add", (req, res) => {
 
 //GET Show Edit Articles Form
 router.get("/articles/edit/:id", (req, res) => {
-  Category.getCategories((err, categories) => {
+  Article.getArticleById(req.params.id, (err, article) => {
     if (err) {
       res.send(err);
     }
 
-    Article.getArticleById(req.params.id, (err, article) => {
+    Category.getCategories((err, categories) => {
       if (err) {
         res.send(err);
       }
