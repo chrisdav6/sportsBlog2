@@ -4,8 +4,15 @@ const Article = require("../models/article");
 
 //GET Articles
 router.get("/", (req, res) => {
-  res.render("articles", {
-    title: "Articles"
+  Article.getArticles((err, articles) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.render("articles", {
+      title: "Articles",
+      articles: articles
+    });
   });
 });
 
