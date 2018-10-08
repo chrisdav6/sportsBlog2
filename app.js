@@ -31,6 +31,9 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 //Use EJS Template Engine
 app.set("view engine", "ejs");
 
+//Use moment
+app.locals.moment = require("moment");
+
 //Use connect-flash
 app.use(cookieParser());
 app.use(session({
