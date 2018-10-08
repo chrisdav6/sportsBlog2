@@ -11,7 +11,7 @@ router.get("/articles", (req, res) => {
     }
 
     res.render("manage_articles", {
-      title: "Articles",
+      title: "Manage Articles",
       articles: articles,
       flash: { success: req.flash("success") }
     });
@@ -27,8 +27,7 @@ router.get("/articles/add", (req, res) => {
 
     res.render("add_article", {
       title: "Create Article",
-      categories: categories,
-      flash: { success: req.flash("success") }
+      categories: categories
     });
   });
 });
@@ -48,8 +47,7 @@ router.get("/articles/edit/:id", (req, res) => {
       res.render("edit_article", {
         title: "Edit Article",
         article: article,
-        categories: categories,
-        flash: { success: req.flash("success") }
+        categories: categories
       });
     });
   });
@@ -73,8 +71,7 @@ router.get("/categories", (req, res) => {
 //GET Show Add Categories Form
 router.get("/categories/add", (req, res) => {
   res.render("add_category", {
-    title: "Create Category",
-    flash: { success: req.flash("success") }
+    title: "Create Category"
   });
 });
 
@@ -87,8 +84,7 @@ router.get("/categories/edit/:id", (req, res) => {
 
     res.render("edit_category", {
       title: "Edit Category",
-      category: category,
-      flash: { success: req.flash("success") }
+      category: category
     });
   });
 });

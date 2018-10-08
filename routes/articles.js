@@ -5,24 +5,21 @@ const Article = require("../models/article");
 //GET Articles
 router.get("/", (req, res) => {
   res.render("articles", {
-    title: "Articles",
-    flash: { success: req.flash("success") }
+    title: "Articles"
   });
 });
 
 //GET Show single article
 router.get("/show/:id", (req, res) => {
   res.render("article", {
-    title: "Article",
-    flash: { success: req.flash("success") }
+    title: "Article"
   });
 });
 
 //GET category articles
 router.get("/category/:category_id", (req, res) => {
   res.render("articles", {
-    title: "Category Articles",
-    flash: { success: req.flash("success") }
+    title: "Category Articles"
   });
 });
 
@@ -40,6 +37,7 @@ router.post("/add", (req, res) => {
       res.send(err);
     }
 
+    req.flash('success', 'New article has been added!');
     res.redirect("/manage/articles");
   });
 });
@@ -61,6 +59,7 @@ router.post("/edit/:id", (req, res) => {
       res.send(err);
     }
 
+    req.flash('success', 'Article has been editted!');
     res.redirect("/manage/articles");
   });
 });
@@ -74,6 +73,7 @@ router.delete("/delete/:id", (req, res) => {
       res.send(err);
     }
 
+    req.flash('success', 'Article has been deleted!');
     res.sendStatus(200);
   });
 });

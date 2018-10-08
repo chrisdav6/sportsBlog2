@@ -11,8 +11,7 @@ router.get("/", (req, res) => {
 
     res.render("categories", {
       title: "Categories",
-      categories: categories,
-      flash: { success: req.flash("success") }
+      categories: categories
     });
   });
 });
@@ -28,6 +27,7 @@ router.post("/add", (req, res) => {
       res.send(err);
     }
 
+    req.flash('success', 'New category has been added!');
     res.redirect("/manage/categories");
   });
 });
@@ -42,7 +42,8 @@ router.post("/edit/:id", (req, res) => {
     if (err) {
       res.send(err);
     }
-
+    
+    req.flash('success', 'Category has been editted!');
     res.redirect("/manage/categories");
   });
 });
@@ -56,6 +57,7 @@ router.delete("/delete/:id", (req, res) => {
       res.send(err);
     }
 
+    req.flash('success', 'Category has been deleted!');
     res.sendStatus(200);
   });
 });
