@@ -18,7 +18,7 @@ $(() => {
     $target = $(e.target);
     $.ajax({
       type: "DELETE",
-      url: "/articles/delete/" + $target.attr("data-cat-id"),
+      url: "/articles/delete/" + $target.attr("data-article-id"),
       success: (response) => {
         window.location.href = "/manage/articles";
       },
