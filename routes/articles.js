@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Article = require("../models/article");
+const Category = require("../models/category");
 
 //GET Articles
 router.get("/", (req, res) => {
@@ -25,8 +26,21 @@ router.get("/show/:id", (req, res) => {
 
 //GET category articles
 router.get("/category/:category_id", (req, res) => {
-  res.render("articles", {
-    title: "Category Articles"
+  Article.getCategoryArticles(req.params.category_id, (err, articles) => {
+    if(err) {
+      res.send(err);
+    }
+
+    Category.getCategoryById(req.params.category_id, (err, category) => {
+      if(err) {
+        res.send(err);
+      }
+
+      res.render("articles", {
+        title: `${category.title} Articles`,
+        articles: articles
+      });
+    });
   });
 });
 

@@ -18,15 +18,9 @@
         <ul class="list-group">
           <% articles.forEach((article) => { %>
           <li class="list-group-item">
-            <h3><a href="/articles/show/<%= article._id %>" class="text-info"><%= article.title %></a></h3>
-            <div>
-              <p class="mb-0">Created:
-                <%= moment(article.created_at).format("MMMM Do YYYY, h:mma") %>
-              </p>
-              <p class="mb-0">Author:
-                <%= article.author %>
-              </p>
-            </div>
+            <h2 class=><a href="/articles/show/<%= article._id %>" class="text-info"><%= article.title %></a></h2>
+            <h5><%= article.subtitle %></h5>
+            <p class="mb-0">Posted By: <%= article.author %> on <%= moment(article.created_at).format("MMMM Do YYYY, h:mma") %></p>
           </li>
           <% }); %>
         </ul>

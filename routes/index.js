@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
       articles: articles,
       flash: { success: req.flash("success") }
     });
-  }, 2);
+  }, 4);
 });
 
 module.exports = router;
