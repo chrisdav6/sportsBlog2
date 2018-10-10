@@ -19,8 +19,22 @@ router.get("/", (req, res) => {
 
 //GET Show single article
 router.get("/show/:id", (req, res) => {
-  res.render("article", {
-    title: "Article"
+  Article.getArticleById(req.params.id, (err, article) => {
+    if(err) {
+      res.send(err);
+    }
+
+    Category.getCategoryById(article.category, (err, category) => {
+      if(err) {
+        res.send(err);
+      }
+
+      res.render("article", {
+        title: "Article",
+        article: article,
+        category: category
+      });
+    });
   });
 });
 

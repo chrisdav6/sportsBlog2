@@ -1,20 +1,19 @@
 <%- include partials/header.ejs %>
 
-<section id="feature" class="text-light d-flex align-items-center">
+<section id="articles" class="py-5">
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1 class="display-2 mt-5">SportsBlog</h1>
-        <p class="lead">Get your sports fix today!</p>
+        <h1 class="mb-0"><%= article.title %></h1>
+        <hr class="mb-2">
+        <h3 class="mb-5"><%= article.subtitle %></h3>
+        <p class="lead mb-5"><%= article.body %></p>
+        <p class="mb-2">Created by <%= article.author %> / <%= moment(article.created_at).format("MMMM Do YYYY, h:mma") %></p>
+        <hr class="my-4">
+        <a href="/articles/category/<%= article.category %>" class="text-info"><i class="fas fa-arrow-alt-circle-left"></i> Back to <%= category.title %> Articles</a>
       </div>
     </div>
   </div>
 </section>
-
-<div class="container">
-  <p>
-    <%= title %>
-  </p>
-</div>
 
 <%- include partials/footer.ejs %>
