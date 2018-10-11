@@ -32,7 +32,8 @@ router.get("/show/:id", (req, res) => {
       res.render("article", {
         title: "Article",
         article: article,
-        category: category
+        category: category,
+        flash: { success: req.flash("success") }
       });
     });
   });
@@ -110,6 +111,25 @@ router.delete("/delete/:id", (req, res) => {
 
     req.flash('success', 'Article has been deleted!');
     res.sendStatus(200);
+  });
+});
+
+//POST Add Comment
+router.post("/comments/add/:id", (req, res) => {
+  let article = new Article();
+  let query = { _id: req.params.id };
+  let comment = {
+    comment_name: req.body.name,
+    comment_body: req.body.comment
+  };
+
+  Article.addComment(query, comment, (err, article) => {
+    if (err) {
+      res.send(err);
+    }
+
+    req.flash('success', 'New comment has been added!');
+    res.redirect("/articles/show/" + req.params.id);
   });
 });
 

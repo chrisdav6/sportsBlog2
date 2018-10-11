@@ -1,5 +1,16 @@
 <%- include partials/header.ejs %>
 
+<!-- Flash Message -->
+<% if(flash && flash.success && flash.success.length > 0) { %>
+<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+  <%= flash.success %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% } %>
+<!-- /Flash Message -->
+
 <section id="articles" class="py-5">
   <div class="container">
     <div class="row">
@@ -13,6 +24,49 @@
         <a href="/articles/category/<%= article.category %>" class="text-info"><i class="fas fa-arrow-alt-circle-left"></i> Back to <%= category.title %> Articles</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="comments" class="pb-5">
+  <div class="container">
+
+    <div class="row py-5">
+      <div class="col">
+        <h5>Comments</h5>
+        <hr class="mb-0"> 
+
+        <div class="row">
+          <% article.comments.forEach((comment) => { %>
+            <div class="col-md-6">
+                <div class="border-bottom py-5">
+                  <p class="lead my-0"><strong>Name:</strong> <%= comment.comment_name %></p>
+                  <p class="lead my-0"><strong>Comment:</strong> <%= comment.comment_body %></p>
+                  <p class="lead my-0"><strong>Date:</strong> <%= moment(comment.comment_date).format("MMMM Do YYYY, h:mma") %></p>
+                </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <div class="col">
+        <h5>Leave a comment</h5>
+        <hr class="mb-4">
+        <form action="/articles/comments/add/<%= article._id %>" method="post">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" name="name" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" name="comment" id="comment" rows="5" required></textarea>
+          </div>
+          <button class="btn btn-outline-info">Add Comment</button>
+        </form>
+      </div>
+    </div>
+
   </div>
 </section>
 

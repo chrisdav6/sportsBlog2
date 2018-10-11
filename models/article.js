@@ -22,20 +22,15 @@ const articleSchema = mongoose.Schema({
     default: Date.now
   },
   comments: [{
-    comment_subject: {
+    comment_name: {
       type: String
     },
     comment_body: {
       type: String
     },
-    comment_author: {
-      type: String
-    },
-    comment_email: {
-      type: String
-    },
     comment_date: {
-      type: String
+      type: Date,
+      defualt: Date.now
     }
   }]
 });
@@ -71,4 +66,16 @@ module.exports.updateArticle = (query, update, options, callback) => {
 //Remove Article
 module.exports.removeArticle = (query, callback) => {
   Article.deleteOne(query, callback);
+};
+
+//Add Comment
+module.exports.addComment = (query, comment, callback) => {
+  Article.update(query,
+    {
+      $push: {
+        comments: comment
+      }
+    },
+    callback
+  );
 };
